@@ -1,0 +1,490 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fff8eb">
+  <meta name="description" content="Dapur Umi - Aneka camilan dan minuman rumahan dengan sistem pre-order.">
+  <title>Dapur Umi | Dibuat dengan Hati</title>
+
+  <style>
+    :root {
+      --cream: #fff8eb;
+      --orange: #ff7946;
+      --pink: #ffb4c4;
+      --yellow: #ffe185;
+      --dark: #32251f;
+      --green: #d5ecbf;
+      --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: "Trebuchet MS", Arial, sans-serif;
+      background: var(--cream);
+      color: var(--dark);
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    button, a { -webkit-tap-highlight-color: transparent; }
+
+    button:focus-visible, a:focus-visible {
+      outline: 3px solid #196a50;
+      outline-offset: 4px;
+    }
+
+    .container {
+      width: min(1120px, 90%);
+      margin: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 248, 235, .96);
+      border-bottom: 2px solid var(--dark);
+    }
+
+    .navbar {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+    }
+
+    .logo {
+      font-size: 27px;
+      font-weight: 900;
+      letter-spacing: -1.5px;
+    }
+
+    .logo span { color: var(--orange); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-weight: bold;
+    }
+
+    .nav-button, .primary-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 2px solid var(--dark);
+      border-radius: 100px;
+      padding: 14px 23px;
+      font-size: 15px;
+      font-weight: 900;
+      background: var(--yellow);
+      box-shadow: 4px 4px 0 var(--dark);
+      transition: transform .2s, box-shadow .2s;
+    }
+
+    .nav-button:hover, .primary-button:hover {
+      transform: translate(2px, 2px);
+      box-shadow: 2px 2px 0 var(--dark);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 85px 0 95px;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 10px 18px;
+      background: var(--green);
+      border: 2px solid var(--dark);
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    h1 {
+      font-size: clamp(55px, 7vw, 100px);
+      line-height: .98;
+      letter-spacing: -5px;
+      margin: 24px 0;
+    }
+
+    h1 span { color: var(--orange); }
+
+    .hero p {
+      font-size: 19px;
+      line-height: 1.7;
+      max-width: 450px;
+      margin-bottom: 30px;
+    }
+
+    .hero-art {
+      min-height: 390px;
+      position: relative;
+      display: grid;
+      place-items: center;
+    }
+
+    .art-circle {
+      width: min(360px, 85%);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: var(--pink);
+      border: 3px solid var(--dark);
+      box-shadow: 13px 13px 0 var(--yellow);
+      display: grid;
+      place-items: center;
+      font-size: clamp(120px, 17vw, 200px);
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .art-tag {
+      position: absolute;
+      bottom: 35px;
+      right: 0;
+      transform: rotate(-9deg);
+      background: var(--yellow);
+      border: 2px solid var(--dark);
+      padding: 16px 20px;
+      border-radius: 14px;
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    .sparkle {
+      position: absolute;
+      left: 3%;
+      top: 3%;
+      font-size: 65px;
+      color: var(--orange);
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    .marquee {
+      padding: 16px 10px;
+      text-align: center;
+      background: var(--orange);
+      color: var(--dark);
+      border-top: 2px solid var(--dark);
+      border-bottom: 2px solid var(--dark);
+      font-size: 15px;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
+
+    .menu-section { padding: 85px 0; }
+
+    .section-top {
+      text-align: center;
+      margin-bottom: 45px;
+    }
+
+    .section-top h2 {
+      font-size: clamp(39px, 5vw, 64px);
+      letter-spacing: -2px;
+      margin: 15px 0;
+    }
+
+    .section-top p {
+      font-size: 17px;
+      line-height: 1.6;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .product-card {
+      background: var(--white);
+      border: 2px solid var(--dark);
+      border-radius: 23px;
+      overflow: hidden;
+      box-shadow: 6px 6px 0 var(--dark);
+      transition: transform .2s;
+    }
+
+    .product-card:hover { transform: translateY(-5px); }
+
+    .product-image {
+      height: 230px;
+      display: grid;
+      place-items: center;
+      font-size: 105px;
+      border-bottom: 2px solid var(--dark);
+    }
+
+    .bg-pink { background: var(--pink); }
+    .bg-yellow { background: var(--yellow); }
+    .bg-green { background: var(--green); }
+
+    .product-info { padding: 22px; }
+
+    .product-info h3 {
+      margin: 0 0 10px;
+      font-size: 26px;
+    }
+
+    .product-info p {
+      color: #66554c;
+      line-height: 1.6;
+      min-height: 50px;
+    }
+
+    .product-label {
+      display: inline-block;
+      margin-top: 12px;
+      border-radius: 100px;
+      padding: 9px 14px;
+      background: var(--cream);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .info-section {
+      background: var(--yellow);
+      border-top: 2px solid var(--dark);
+      border-bottom: 2px solid var(--dark);
+      padding: 70px 0;
+    }
+
+    .info-section h2 {
+      text-align: center;
+      font-size: clamp(34px, 5vw, 53px);
+      margin-top: 0;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .step {
+      background: var(--white);
+      border: 2px solid var(--dark);
+      border-radius: 18px;
+      padding: 26px;
+    }
+
+    .step-number {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--orange);
+      border: 2px solid var(--dark);
+      font-weight: 900;
+      font-size: 20px;
+    }
+
+    .step h3 { font-size: 22px; }
+
+    .step p { line-height: 1.7; }
+
+    footer {
+      padding: 35px 15px;
+      text-align: center;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 850px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero { padding: 55px 0 75px; }
+      .hero-inner > div:first-child { text-align: center; }
+      .hero p { margin-left: auto; margin-right: auto; }
+      .hero-art { min-height: 300px; }
+      .art-circle { width: 265px; font-size: 135px; }
+      .product-grid { grid-template-columns: repeat(2, 1fr); }
+      .steps { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      .navbar { min-height: 70px; }
+      .logo { font-size: 23px; }
+      .nav-links > a:first-child { display: none; }
+      .nav-button { padding: 12px 16px; font-size: 13px; }
+      h1 { letter-spacing: -3px; }
+      .hero p { font-size: 16px; }
+      .hero-art { min-height: 270px; }
+      .art-circle { width: 230px; font-size: 120px; }
+      .art-tag { bottom: 10px; right: 5px; font-size: 13px; }
+      .product-grid { grid-template-columns: 1fr; }
+      .product-image { height: 240px; }
+      .menu-section { padding: 60px 0; }
+      .marquee { font-size: 12px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="navbar container" aria-label="Navigasi utama">
+      <a class="logo" href="#beranda">Dapur <span>Umi.</span></a>
+
+      <div class="nav-links">
+        <a href="#cara-pesan">Cara Pesan</a>
+        <a class="nav-button" href="#menu">Lihat Menu ↗</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="beranda">
+      <div class="container hero-inner">
+        <div>
+          <span class="eyebrow">♥ Camilan Rumahan Penuh Cinta</span>
+
+          <h1>
+            Enaknya<br>
+            Bikin <span>Nagih!</span>
+          </h1>
+
+          <p>
+            Lagi pengen camilan enak?
+            Yuk, pesan favoritmu di Dapur Umi!
+            Dibuat dengan hati, khusus buat kamu.
+          </p>
+
+          <a href="#menu" class="primary-button">
+            Lihat Menu Favorit ↓
+          </a>
+        </div>
+
+        <div class="hero-art" aria-hidden="true">
+          <span class="sparkle">✳</span>
+          <div class="art-circle">🥟</div>
+          <span class="art-tag">Fresh & Yummy! ✨</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="marquee">
+      ✿ MADE WITH LOVE ✿ PRE-ORDER DULU YAA ✿
+      DAPUR UMI ✿
+    </div>
+
+    <section class="menu-section" id="menu">
+      <div class="container">
+        <div class="section-top">
+          <span class="eyebrow">Menu Dapur Umi</span>
+          <h2>Mau Jajan Apa Hari Ini?</h2>
+          <p>
+            Pilih makanan favoritmu.
+            Pesan lebih dulu, nikmati sesuai jadwalmu!
+          </p>
+        </div>
+
+        <div class="product-grid">
+          <!-- Produk contoh 1 -->
+          <article class="product-card">
+            <div class="product-image bg-pink" role="img" aria-label="Ilustrasi cireng">
+              🥟
+            </div>
+            <div class="product-info">
+              <h3>Cireng</h3>
+              <p>Camilan gurih yang cocok dinikmati kapan saja.</p>
+              <span class="product-label">Pilihan pcs / box</span>
+            </div>
+          </article>
+
+          <!-- Produk contoh 2 -->
+          <article class="product-card">
+            <div class="product-image bg-yellow" role="img" aria-label="Ilustrasi risol">
+              🥐
+            </div>
+            <div class="product-info">
+              <h3>Risol</h3>
+              <p>Camilan lezat untuk teman santai bersama keluarga.</p>
+              <span class="product-label">Pilihan pcs / box</span>
+            </div>
+          </article>
+
+          <!-- Produk contoh 3 -->
+          <article class="product-card">
+            <div class="product-image bg-green" role="img" aria-label="Ilustrasi minuman">
+              🍹
+            </div>
+            <div class="product-info">
+              <h3>Jamu</h3>
+              <p>Minuman rumahan untuk melengkapi harimu.</p>
+              <span class="product-label">Pilihan botol</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="info-section" id="cara-pesan">
+      <div class="container">
+        <h2>Gampang Banget Pesannya!</h2>
+
+        <div class="steps">
+          <div class="step">
+            <span class="step-number">1</span>
+            <h3>Pilih Makanan</h3>
+            <p>
+              Lihat menu Dapur Umi dan tentukan
+              makanan yang kamu suka.
+            </p>
+          </div>
+
+          <div class="step">
+            <span class="step-number">2</span>
+            <h3>Tentukan Tanggal</h3>
+            <p>
+              Pilih tanggal pesanan ingin diambil
+              atau diantar. Karena kami pakai sistem PO, ya!
+            </p>
+          </div>
+
+          <div class="step">
+            <span class="step-number">3</span>
+            <h3>Pesan lewat WhatsApp</h3>
+            <p>
+              Kirim rincian pesanan dan tunggu
+              konfirmasi dari Dapur Umi.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <strong>Dapur Umi ♥</strong><br>
+    Dibuat dengan hati, disajikan untuk kamu.<br>
+    © 2026 Dapur Umi
+  </footer>
+</body>
+</html>
