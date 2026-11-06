@@ -1209,7 +1209,7 @@ function buildMessage() {
     return `Halo Dapur Umi, saya mau PRE-ORDER ya 😊
 
 Nama: ${$("custName").value.trim()}
-WhatsApp: ${$("custPhone").value.trim()}
+WhatsApp: ${$("6287741854691").value.trim()}
 Tanggal diterima: ${date}
 Waktu: ${$("slot").value}
 Metode: ${delivery ? "Diantar ke Rumah" : "Ambil Sendiri"}${delivery ? `\nWilayah: ${zone.name}\nAlamat: ${$("address").value.trim()}` : ""}
