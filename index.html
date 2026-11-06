@@ -1,110 +1,405 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#fff9ef">
-<meta name="description" content="Dapur Umi — pesan jajanan rumahan dengan sistem pre-order.">
-<title>Dapur Umi | Pesan Jajanan Rumahan</title>
-<style>
-:root{--ink:#2c2423;--muted:#685c56;--cream:#fff9ef;--orange:#ff754b;--yellow:#ffe48b;--green:#dcf1c7;--pink:#ffc9d8;--purple:#dcd2ff;--blue:#d7e8ff;--line:#372c29;--shadow:5px 5px 0 var(--ink)}
-*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:88px}body{margin:0;background:var(--cream);color:var(--ink);font-family:ui-rounded,"Trebuchet MS",Arial,sans-serif}body.locked{overflow:hidden}button,input,textarea,select{font:inherit}button{cursor:pointer}a{text-decoration:none;color:inherit}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #166e52;outline-offset:3px}button:disabled{opacity:.48;cursor:not-allowed}.wrap{width:min(1200px,92%);margin-inline:auto}.hidden{display:none!important}header{position:sticky;top:0;z-index:15;background:rgba(255,249,239,.97);border-bottom:2px solid var(--ink);backdrop-filter:blur(15px)}.topbar{min-height:76px;display:flex;align-items:center;gap:16px;justify-content:space-between}.brand{font-size:26px;font-weight:1000;letter-spacing:-1.5px;white-space:nowrap}.brand span{color:var(--orange)}.nav{display:flex;align-items:center;gap:18px;font-weight:800}.small-link{font-size:14px}.btn{border:2px solid var(--ink);border-radius:999px;background:var(--yellow);color:var(--ink);padding:13px 19px;display:inline-flex;align-items:center;justify-content:center;gap:9px;font-weight:900;min-height:46px;box-shadow:3px 3px 0 var(--ink);transition:transform .18s,box-shadow .18s}.btn:hover:not(:disabled){transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}.btn.dark{background:var(--ink);color:white}.btn.white{background:white}.btn.orange{background:var(--orange)}.btn.block{width:100%}.icon-btn{display:inline-grid;place-items:center;min-width:46px;min-height:46px;border:2px solid var(--ink);border-radius:50%;background:white;color:var(--ink);font-size:23px;font-weight:800}.cart-trigger{position:relative}.count{position:absolute;top:-10px;right:-7px;background:var(--orange);color:var(--ink);border:2px solid var(--ink);font-size:12px;min-width:24px;height:24px;padding-inline:4px;display:grid;place-items:center;border-radius:30px}.hero{padding:70px 0 65px;overflow:hidden}.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:36px;align-items:center}.eyebrow{background:var(--green);border:2px solid var(--ink);padding:9px 15px;border-radius:40px;display:inline-block;font-weight:900;font-size:13px}.hero h1{font-size:clamp(52px,7.6vw,100px);line-height:.97;letter-spacing:-4px;margin:22px 0}.hero h1 em{color:var(--orange);font-style:normal}.lead{font-size:clamp(16px,2vw,19px);line-height:1.65;max-width:470px}.hero-actions{display:flex;gap:15px;flex-wrap:wrap;margin-top:25px}.hero-visual{position:relative;display:grid;place-items:center;min-height:350px}.hero-blob{background:var(--pink);border:3px solid var(--ink);border-radius:48% 52% 47% 53%;width:min(345px,90%);aspect-ratio:1;box-shadow:14px 13px 0 var(--yellow);display:grid;place-items:center;transform:rotate(-5deg)}.hero-blob img{width:80%;height:80%;object-fit:contain;filter:drop-shadow(0 14px 12px #0002);border-radius:28%;transform:rotate(5deg)}.hero-sticker{position:absolute;bottom:13px;right:0;background:var(--yellow);padding:14px 19px;border:2px solid var(--ink);border-radius:15px;transform:rotate(-8deg);font-weight:1000}.stars{position:absolute;top:5%;left:10%;font-size:57px;color:var(--orange)}.ribbon{border-block:2px solid var(--ink);background:var(--orange);text-align:center;padding:14px;font-weight:1000;letter-spacing:1px;font-size:14px}.menu-section{padding:80px 0 95px;overflow:hidden}.menu-header{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:24px}.section-title{font-size:clamp(36px,5vw,63px);line-height:1.03;letter-spacing:-2px;margin:15px 0 10px}.subheading{color:var(--muted);font-size:16px;line-height:1.6;max-width:520px}.arrows{display:flex;gap:12px}.carousel{display:flex;overflow-x:auto;gap:18px;scroll-snap-type:x mandatory;scroll-padding-inline:4%;padding:6px max(4%,calc((100vw - 1200px)/2)) 22px;scrollbar-width:thin;scrollbar-color:var(--orange) transparent;overscroll-behavior-x:contain}.product-card{scroll-snap-align:start;flex:0 0 clamp(245px,26vw,315px);background:#f6f5f4;border:2px solid transparent;border-radius:31px;overflow:hidden;display:flex;flex-direction:column;min-height:475px;transition:transform .2s,box-shadow .2s}.product-card:hover{transform:translateY(-5px);box-shadow:0 12px 22px #30201918}.card-content{padding:24px 24px 21px;flex:1;display:flex;flex-direction:column;gap:13px}.card-head{display:flex;align-items:center;justify-content:space-between;gap:8px}.pill{padding:10px 13px;background:#e2e0e3;border-radius:90px;font-size:12px;font-weight:900;white-space:nowrap}.card-arrow{border:0;border-radius:50%;background:white;min-width:42px;height:42px;font-size:24px}.product-card h3{font-size:clamp(27px,3vw,36px);letter-spacing:-1.3px;line-height:1.08;margin:8px 0 0}.product-card p{color:var(--muted);font-size:14px;line-height:1.55;margin:0}.card-price{font-weight:1000;font-size:16px;margin-top:auto;padding-top:8px}.card-photo{height:235px;display:grid;place-items:center;overflow:hidden;border-radius:28px 28px 0 0;position:relative}.card-photo img{width:100%;height:100%;object-fit:cover;transition:transform .35s}.product-card:hover .card-photo img{transform:scale(1.055)}.card-photo:after{content:"Lihat pilihan ↗";position:absolute;bottom:12px;right:12px;background:white;padding:9px 13px;border-radius:99px;font-size:12px;font-weight:900;box-shadow:0 3px 8px #0002}.product-card .select-card{border:0;background:none;cursor:pointer;text-align:left;display:contents;color:inherit}.guide{padding:70px 0;background:var(--yellow);border-block:2px solid var(--ink)}.guide h2{text-align:center;font-size:clamp(33px,5vw,54px);letter-spacing:-2px;margin:0 0 35px}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}.step{border:2px solid var(--ink);border-radius:20px;background:white;padding:23px}.step-number{display:grid;place-items:center;background:var(--orange);border:2px solid var(--ink);border-radius:50%;width:44px;height:44px;font-size:18px;font-weight:1000}.step h3{margin:17px 0 9px;font-size:21px}.step p{line-height:1.65;color:var(--muted);margin-bottom:0}.note-strip{padding:22px 4%;text-align:center;font-weight:800;line-height:1.6}footer{text-align:center;padding:35px 15px 45px;border-top:2px solid var(--ink);font-size:14px;line-height:1.8}.overlay{position:fixed;inset:0;background:#2119149a;z-index:19}.drawer{position:fixed;z-index:20;top:0;right:0;height:100dvh;width:min(500px,100%);background:var(--cream);box-shadow:-10px 0 35px #0002;display:flex;flex-direction:column}.drawer-head{padding:22px 22px 15px;display:flex;justify-content:space-between;align-items:center;border-bottom:2px solid var(--ink);gap:12px}.drawer-head h2{margin:0;font-size:27px}.drawer-body{padding:21px 22px;overflow-y:auto;flex:1}.drawer-footer{padding:16px 22px 23px;border-top:2px solid var(--ink);background:white}.detail-photo{height:230px;border-radius:23px;overflow:hidden;margin-bottom:19px}.detail-photo img{width:100%;height:100%;object-fit:cover}.detail-title{font-size:31px;margin:0 0 8px}.detail-desc{color:var(--muted);line-height:1.6;margin-bottom:23px}.label{display:block;font-size:14px;font-weight:900;margin:16px 0 8px}.field{width:100%;min-height:47px;border:2px solid #c7bbb1;border-radius:12px;background:white;padding:11px 13px;color:var(--ink)}.field:focus{border-color:var(--orange);outline:2px solid var(--orange);outline-offset:1px}.quantity{display:flex;align-items:center;gap:13px}.qty-btn{width:47px;height:47px;border:2px solid var(--ink);border-radius:13px;background:white;font-size:23px;font-weight:900}.qty-value{font-size:23px;font-weight:900;min-width:27px;text-align:center}.summary-row{display:flex;justify-content:space-between;align-items:start;gap:12px;margin:11px 0;font-size:15px}.summary-row.total{font-size:22px;font-weight:1000;border-top:1px solid #d8cdc2;padding-top:13px}.cart-line{display:grid;grid-template-columns:70px 1fr auto;gap:12px;padding:13px 0;border-bottom:1px solid #dbd0c6}.cart-line img{width:70px;height:78px;object-fit:cover;border-radius:12px}.cart-line h3{font-size:15px;margin:0 0 5px}.cart-line p{margin:3px 0;color:var(--muted);font-size:12px}.cart-line .price{font-weight:900;font-size:14px}.mini-btn{border:1px solid var(--ink);border-radius:8px;padding:4px 9px;background:white;font-weight:900;min-width:30px;min-height:30px}.remove{border:0;background:none;color:#a42c2c;font-size:12px;text-decoration:underline;padding:5px;cursor:pointer}.cart-actions{display:flex;align-items:center;gap:8px;margin-top:7px}.checkout-title{font-size:20px;margin:20px 0 10px}.radio-group{display:grid;gap:9px;margin-bottom:15px}.choice{display:flex;align-items:center;gap:10px;border:2px solid #ddd0c5;border-radius:12px;background:white;padding:12px;font-weight:800}.choice input{accent-color:var(--orange);width:18px;height:18px}.help{color:var(--muted);font-size:12px;line-height:1.5;margin:6px 0}.info{background:#fff0ce;border-radius:13px;padding:13px;font-size:13px;line-height:1.55;margin-block:13px}.error{color:#a3202d;font-size:13px;font-weight:800;margin:8px 0}.success{color:#176740;font-size:13px;font-weight:800;margin:8px 0}.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);z-index:40;background:var(--ink);color:white;border-radius:20px;padding:13px 19px;font-weight:800;box-shadow:0 6px 20px #0003;max-width:min(450px,92vw);text-align:center}.empty{text-align:center;padding:45px 15px;color:var(--muted)}.empty span{display:block;font-size:50px;margin-bottom:10px}.no-scroll{overflow:hidden}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 13px}.form-grid .full{grid-column:1/-1}.details-inline{background:white;border-radius:13px;padding:12px;border:1px solid #ddd0c5;margin-bottom:12px}.details-inline strong{display:block;margin-bottom:5px}.badge-temp{font-size:12px;background:#ffeed2;border-radius:90px;padding:8px 12px;display:inline-block;font-weight:800;margin-top:9px}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-@media(max-width:900px){.hero-grid{grid-template-columns:1fr}.hero{text-align:center;padding:50px 0}.lead{margin-inline:auto}.hero-actions{justify-content:center}.hero-visual{min-height:270px}.hero-blob{width:250px}.hero-sticker{right:8%}.steps{grid-template-columns:1fr}.menu-section{padding:60px 0 65px}.product-card{flex-basis:275px}.carousel{padding-inline:4%}}
-@media(max-width:550px){.brand{font-size:22px}.topbar{min-height:66px}.nav{gap:8px}.small-link{display:none}.nav .btn{padding:10px 12px;font-size:12px;min-height:43px}.hero h1{letter-spacing:-2.8px}.hero-visual{min-height:230px}.hero-blob{width:210px}.hero-sticker{font-size:12px;padding:10px;right:1%}.section-title{font-size:39px}.arrows{gap:7px}.arrows .icon-btn{min-width:42px;min-height:42px}.product-card{flex-basis:min(78vw,284px);min-height:465px}.card-content{padding:21px}.card-photo{height:225px}.drawer-head h2{font-size:23px}.form-grid{grid-template-columns:1fr}.cart-line{grid-template-columns:58px 1fr auto}.cart-line img{width:58px;height:66px}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation:none!important;transition:none!important}}
-</style>
-</head>
-<body>
-<header><div class="topbar wrap"><a class="brand" href="#beranda">Dapur <span>Umi.</span></a><nav class="nav" aria-label="Navigasi utama"><a class="small-link" href="#cara-pesan">Cara Pesan</a><a class="btn" href="#menu">Lihat Menu ↗</a><button class="icon-btn cart-trigger" id="openCart" aria-label="Buka keranjang">🛒<span class="count" id="cartCount">0</span></button></nav></div></header>
-<main>
-<section class="hero" id="beranda"><div class="wrap hero-grid"><div><span class="eyebrow">♥ Camilan Rumahan Penuh Cinta</span><h1>Enaknya<br>Bikin <em>Nagih!</em></h1><p class="lead">Lagi pengen jajanan enak? Pilih favoritmu di Dapur Umi, tentukan tanggalnya, lalu pesan dengan mudah lewat WhatsApp.</p><div class="hero-actions"><a class="btn orange" href="#menu">Lihat Menu Favorit ↓</a><a class="btn white" href="#cara-pesan">Gimana Cara Pesannya?</a></div></div><div class="hero-visual" aria-hidden="true"><span class="stars">✳</span><div class="hero-blob"><img src="assets/images/1.JPG" alt="" onerror="this.style.display='none';this.parentElement.textContent='🍰'"></div><div class="hero-sticker">Fresh & Yummy! ✨</div></div></div></section>
-<div class="ribbon">✿ MADE WITH LOVE ✿ PRE-ORDER DULU YAA ✿ DAPUR UMI ✿</div>
-<section class="menu-section" id="menu"><div class="wrap menu-header"><div><span class="eyebrow">Menu Dapur Umi</span><h2 class="section-title">Mau Jajan Apa Hari Ini?</h2><p class="subheading">Geser kartu untuk melihat menu lainnya. Ketuk kartu untuk memilih kemasan dan jumlah pesanan.</p><span class="badge-temp">Nama & harga masih contoh untuk uji coba</span></div><div class="arrows"><button class="icon-btn" id="prev" aria-label="Lihat menu sebelumnya">←</button><button class="icon-btn" id="next" aria-label="Lihat menu berikutnya">→</button></div></div><div class="carousel" id="carousel" aria-label="Daftar menu Dapur Umi"></div></section>
-<section class="guide" id="cara-pesan"><div class="wrap"><h2>Gampang Banget Pesannya!</h2><div class="steps"><article class="step"><span class="step-number">1</span><h3>Pilih Makanan</h3><p>Geser kartu, lihat harga, dan masukkan makanan favorit ke keranjang.</p></article><article class="step"><span class="step-number">2</span><h3>Pilih Tanggal PO</h3><p>Tentukan tanggal pesanan ingin diambil atau diantar. Pesan paling lambat sehari sebelumnya, ya.</p></article><article class="step"><span class="step-number">3</span><h3>Kirim via WhatsApp</h3><p>Isi nama dan alamat, lalu kirim rincian pesanan ke WhatsApp Dapur Umi untuk dikonfirmasi.</p></article></div></div></section>
-<div class="note-strip">💛 Bisa ambil sendiri atau diantar sesuai wilayah. Pembayaran tunai atau transfer manual.</div>
-</main><footer><strong>Dapur Umi ♥</strong><br>Dibuat dengan hati, disajikan untuk kamu.<br>© 2026 Dapur Umi</footer>
-<div class="overlay hidden" id="overlay"></div>
-<aside class="drawer hidden" id="detailDrawer" role="dialog" aria-modal="true" aria-labelledby="detailTitle"><div class="drawer-head"><h2>Detail Makanan</h2><button class="icon-btn" data-close aria-label="Tutup detail">×</button></div><div class="drawer-body"><div id="detailPhoto" class="detail-photo"></div><h2 class="detail-title" id="detailTitle"></h2><p class="detail-desc" id="detailDesc"></p><label class="label" for="variantSelect">Mau beli yang mana?</label><select class="field" id="variantSelect"></select><p class="help" id="unitInfo"></p><label class="label">Jumlah kemasan</label><div class="quantity"><button class="qty-btn" id="detailMinus" aria-label="Kurangi jumlah">−</button><span class="qty-value" id="detailQty">1</span><button class="qty-btn" id="detailPlus" aria-label="Tambah jumlah">+</button></div></div><div class="drawer-footer"><div class="summary-row total"><span>Total</span><span id="detailTotal">Rp0</span></div><button class="btn orange block" id="addItem">+ Masukkan Keranjang</button></div></aside>
-<aside class="drawer hidden" id="cartDrawer" role="dialog" aria-modal="true" aria-labelledby="cartTitle"><div class="drawer-head"><h2 id="cartTitle">Keranjang Pesanan</h2><button class="icon-btn" data-close aria-label="Tutup keranjang">×</button></div><div class="drawer-body" id="cartBody"></div><div class="drawer-footer"><div class="summary-row total"><span>Subtotal</span><span id="cartSubtotal">Rp0</span></div><button class="btn orange block" id="goCheckout">Lanjut Isi Data Pesanan →</button></div></aside>
-<aside class="drawer hidden" id="checkoutDrawer" role="dialog" aria-modal="true" aria-labelledby="checkoutTitle"><div class="drawer-head"><h2 id="checkoutTitle">Isi Data Pesanan</h2><button class="icon-btn" data-close aria-label="Tutup checkout">×</button></div><div class="drawer-body"><div class="info">📅 <strong>Sistem Pre-Order:</strong> pilih tanggal pesanan ingin diterima. Untuk contoh ini, batas pemesanan adalah H-1 pukul 18.00.</div><form id="checkoutForm" novalidate><div class="form-grid"><div class="full"><label class="label" for="custName">Nama pemesan *</label><input class="field" id="custName" required autocomplete="name" placeholder="Nama Ibu / Bapak"></div><div class="full"><label class="label" for="custPhone">Nomor WhatsApp *</label><input class="field" id="custPhone" type="tel" required inputmode="tel" placeholder="08xxxxxxxxxx"></div><div><label class="label" for="orderDate">Mau diterima tanggal berapa? *</label><input class="field" id="orderDate" type="date" required></div><div><label class="label" for="slot">Pilihan waktu *</label><select class="field" id="slot" required><option value="11.00–13.00">Siang (11.00–13.00)</option><option value="16.00–18.00">Sore (16.00–18.00)</option></select></div><div class="full"><span class="label">Pesanan mau diterima bagaimana? *</span><div class="radio-group"><label class="choice"><input type="radio" name="method" value="pickup" checked> 🏠 Ambil Sendiri (gratis ongkir)</label><label class="choice"><input type="radio" name="method" value="delivery"> 🛵 Diantar ke Rumah</label></div></div><div class="full hidden" id="deliveryFields"><label class="label" for="zone">Pilih wilayah pengantaran *</label><select class="field" id="zone"><option value="">Pilih wilayah</option></select><p class="help">Tarif dan minimum belanja masih contoh. Wilayah asli akan ditetapkan kemudian.</p><label class="label" for="address">Alamat lengkap *</label><textarea class="field" id="address" rows="3" placeholder="Nama jalan, nomor rumah, patokan"></textarea></div><div class="full"><span class="label">Cara pembayaran *</span><div class="radio-group"><label class="choice"><input type="radio" name="payment" value="Tunai" checked> 💵 Bayar Tunai</label><label class="choice"><input type="radio" name="payment" value="Transfer Bank"> 🏦 Transfer Bank Manual</label></div><div class="details-inline hidden" id="bankInfo"><strong>Transfer setelah pesanan dikonfirmasi</strong><span id="bankText">Nomor rekening penjual belum diisi.</span></div></div><div class="full"><label class="label" for="notes">Catatan (jika ada)</label><textarea class="field" id="notes" rows="2" placeholder="Contoh: tidak terlalu pedas"></textarea></div></div></form><p id="formError" class="error" role="alert" aria-live="polite"></p><div class="details-inline"><div class="summary-row"><span>Subtotal makanan</span><strong id="ckSubtotal">Rp0</strong></div><div class="summary-row"><span>Ongkir</span><strong id="ckDelivery">Rp0</strong></div><div class="summary-row total"><span>Total</span><span id="ckTotal">Rp0</span></div><p id="minHelp" class="help"></p></div></div><div class="drawer-footer"><button class="btn orange block" id="sendWa">Kirim Pesanan ke WhatsApp →</button><button class="btn white block" id="copyOrder" style="margin-top:10px">Salin Rincian Pesanan</button><p class="help" style="text-align:center">Pesanan baru diproses setelah Dapur Umi mengonfirmasi melalui WhatsApp.</p></div></aside>
-<div class="toast hidden" id="toast" role="status"></div>
-<script>
-"use strict";
-// ===== PENGATURAN PEMILIK TOKO (GANTI DATA CONTOH SEBELUM MENERIMA PESANAN) =====
-const SETTINGS = {
-  whatsapp: "", // Nomor WA penjual format 628xxxxxxxxxx. Kosong = fitur kirim WA dinonaktifkan.
-  bank: "", // Contoh: BCA
-  accountNumber: "", // Nomor rekening asli penjual
-  accountName: "", // Nama pemilik rekening
-  cutoffHour: 18,
-  preorderDays: 1,
-  zones: [
-    {id:"dekat",name:"Zona Dekat (contoh)",fee:5000,min:15000},
-    {id:"sedang",name:"Zona Sedang (contoh)",fee:8000,min:30000},
-    {id:"jauh",name:"Zona Jauh (contoh)",fee:12000,min:50000}
-  ]
-};
-// Nama, foto dan harga sementara untuk menguji tampilan. Cocokkan produk aslinya nanti.
-const PRODUCTS = [
-  {id:"p01",name:"Kue Manis Umi",desc:"Camilan manis rumahan untuk teman santai.",photo:"1.JPG",category:"Kue • PCS / BOX",color:"#f5c5d8",variants:[{id:"pcs",name:"Satuan (1 pcs)",price:4000},{id:"box",name:"Kotak (isi 6 pcs)",price:22000}]},
-  {id:"p02",name:"Camilan Spesial",desc:"Pilihan jajanan favorit keluarga.",photo:"2.JPG",category:"Camilan • PCS / BOX",color:"#f6e690",variants:[{id:"pcs",name:"Satuan (1 pcs)",price:5000},{id:"box",name:"Kotak (isi 5 pcs)",price:23000}]},
-  {id:"p03",name:"Kue Lembut",desc:"Cocok untuk teman minum teh di rumah.",photo:"3.JPG",category:"Kue • PCS / BOX",color:"#d5e9c8",variants:[{id:"pcs",name:"Satuan (1 pcs)",price:4500},{id:"box",name:"Kotak (isi 6 pcs)",price:25000}]},
-  {id:"p04",name:"Jajanan Pilihan",desc:"Dibuat untuk menemani waktu berkumpul.",photo:"4.JPG",category:"Jajanan • PCS / BOX",color:"#d7e6ff",variants:[{id:"pcs",name:"Satuan (1 pcs)",price:3500},{id:"box",name:"Kotak (isi 8 pcs)",price:26000}]},
-  {id:"p05",name:"Menu Favorit",desc:"Camilan rumahan dengan rasa istimewa.",photo:"5.JPG",category:"Camilan • PCS / BOX",color:"#e4d6fa",variants:[{id:"pcs",name:"Satuan (1 pcs)",price:5000},{id:"box",name:"Kotak (isi 6 pcs)",price:28000}]},
-  {id:"p06",name:"Kue Harian",desc:"Teman yang pas untuk kumpul bersama.",photo:"6.JPG",category:"Kue • PCS / BOX",color:"#f8d9bd",variants:[{id:"pcs",name:"Satuan (1 pcs)",price:4000},{id:"box",name:"Kotak (isi 10 pcs)",price:38000}]},
-  {id:"p07",name:"Camilan Ceria",desc:"Sajian lezat untuk berbagai suasana.",photo:"7.JPG",category:"Camilan • PCS / BOX",color:"#d3eadb",variants:[{id:"pcs",name:"Satuan (1 pcs)",price:4500},{id:"box",name:"Kotak (isi 5 pcs)",price:21000}]},
-  {id:"p08",name:"Kreasi Dapur Umi",desc:"Salah satu pilihan jajanan rumahan kami.",photo:"8.JPG",category:"Kue • PCS / BOX",color:"#f5d0ca",variants:[{id:"pcs",name:"Satuan (1 pcs)",price:5000},{id:"box",name:"Kotak (isi 6 pcs)",price:28000}]}
-];
-const rupiah = n => "Rp"+Number(n).toLocaleString("id-ID");
-const $ = id => document.getElementById(id);
-const photoURL = p => "assets/images/"+encodeURIComponent(p.photo);
-let cart = [];
-try {const stored=JSON.parse(localStorage.getItem("dapurUmiCart")||"[]"); if(Array.isArray(stored)) cart=stored.filter(item=>PRODUCTS.some(p=>p.id===item.id&&p.variants.some(v=>v.id===item.variant))&&Number.isSafeInteger(item.qty)&&item.qty>0&&item.qty<=99)}catch(e){cart=[]}
-let activeProduct=null, detailQuantity=1, lastFocused=null, currentDrawer=null, toastTimer;
-function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"})[c])}
-function getVariant(item){return PRODUCTS.find(p=>p.id===item.id)?.variants.find(v=>v.id===item.variant)}
-function subtotal(){return cart.reduce((total,item)=>total+(getVariant(item)?.price||0)*item.qty,0)}
-function saveCart(){localStorage.setItem("dapurUmiCart",JSON.stringify(cart));$("cartCount").textContent=cart.reduce((s,i)=>s+i.qty,0)}
-function toast(message){clearTimeout(toastTimer);$("toast").textContent=message;$("toast").classList.remove("hidden");toastTimer=setTimeout(()=>$("toast").classList.add("hidden"),2800)}
-function renderProducts(){const container=$("carousel");container.innerHTML=PRODUCTS.map(p=>`<article class="product-card"><div class="card-content"><div class="card-head"><span class="pill">${escapeHTML(p.category)}</span><button class="card-arrow" data-product="${p.id}" aria-label="Lihat pilihan ${escapeHTML(p.name)}">↗</button></div><h3>${escapeHTML(p.name)}</h3><p>${escapeHTML(p.desc)}</p><div class="card-price">Mulai ${rupiah(Math.min(...p.variants.map(v=>v.price)))}</div></div><button data-product="${p.id}" style="all:unset;cursor:pointer;display:block" aria-label="Pilih ${escapeHTML(p.name)}"><div class="card-photo" style="background:${p.color}"><img src="${photoURL(p)}" alt="Foto ${escapeHTML(p.name)}" loading="lazy" onerror="this.style.display='none';this.parentElement.insertAdjacentText('afterbegin','Foto belum tersedia')"></div></button></article>`).join("")}
-function openDrawer(name){closeDrawer(false);lastFocused=document.activeElement;currentDrawer=name;$("overlay").classList.remove("hidden");$(name).classList.remove("hidden");document.body.classList.add("locked");$(name).querySelector("[data-close]").focus()}
-function closeDrawer(restore=true){["detailDrawer","cartDrawer","checkoutDrawer","overlay"].forEach(id=>$(id).classList.add("hidden"));document.body.classList.remove("locked");currentDrawer=null;if(restore&&lastFocused?.isConnected)lastFocused.focus()}
-function openProduct(id){activeProduct=PRODUCTS.find(p=>p.id===id);if(!activeProduct)return;detailQuantity=1;$("detailPhoto").style.background=activeProduct.color;$("detailPhoto").innerHTML=`<img src="${photoURL(activeProduct)}" alt="${escapeHTML(activeProduct.name)}">`;$("detailTitle").textContent=activeProduct.name;$("detailDesc").textContent=activeProduct.desc;$("variantSelect").innerHTML=activeProduct.variants.map(v=>`<option value="${v.id}">${escapeHTML(v.name)} — ${rupiah(v.price)}</option>`).join("");updateDetail();openDrawer("detailDrawer")}
-function updateDetail(){if(!activeProduct)return;const v=activeProduct.variants.find(x=>x.id===$("variantSelect").value)||activeProduct.variants[0];$("detailQty").textContent=detailQuantity;$("unitInfo").textContent=`${rupiah(v.price)} untuk ${v.name.toLowerCase()}`;$("detailTotal").textContent=rupiah(v.price*detailQuantity)}
-function addItem(){if(!activeProduct)return;const variant=$("variantSelect").value;const found=cart.find(x=>x.id===activeProduct.id&&x.variant===variant);if(found)found.qty=Math.min(99,found.qty+detailQuantity);else cart.push({id:activeProduct.id,variant,qty:detailQuantity});saveCart();closeDrawer();toast("Berhasil masuk keranjang 🛒")}
-function updateCart(id,variant,delta){const item=cart.find(x=>x.id===id&&x.variant===variant);if(!item)return;item.qty+=delta;if(item.qty<=0)cart=cart.filter(x=>x!==item);else item.qty=Math.min(99,item.qty);saveCart();renderCart()}
-function removeCart(id,variant){cart=cart.filter(x=>!(x.id===id&&x.variant===variant));saveCart();renderCart()}
-function renderCart(){const body=$("cartBody");if(!cart.length){body.innerHTML='<div class="empty"><span>🛒</span>Keranjang masih kosong.<br>Yuk pilih makanan dulu!</div>'}else{body.innerHTML=cart.map(item=>{const p=PRODUCTS.find(x=>x.id===item.id),v=getVariant(item);return `<div class="cart-line"><img src="${photoURL(p)}" alt=""><div><h3>${escapeHTML(p.name)}</h3><p>${escapeHTML(v.name)}</p><span class="price">${rupiah(v.price*item.qty)}</span><div class="cart-actions"><button class="mini-btn" data-cart="minus" data-id="${p.id}" data-variant="${v.id}" aria-label="Kurangi ${escapeHTML(p.name)}">−</button><strong>${item.qty}</strong><button class="mini-btn" data-cart="plus" data-id="${p.id}" data-variant="${v.id}" aria-label="Tambah ${escapeHTML(p.name)}">+</button><button class="remove" data-cart="remove" data-id="${p.id}" data-variant="${v.id}">Hapus</button></div></div></div>`}).join("")}$("cartSubtotal").textContent=rupiah(subtotal());$("goCheckout").disabled=!cart.length}
-function todayLocal(){const now=new Date();return new Date(now.getFullYear(),now.getMonth(),now.getDate())}
-function dateISO(date){const y=date.getFullYear(),m=String(date.getMonth()+1).padStart(2,"0"),d=String(date.getDate()).padStart(2,"0");return `${y}-${m}-${d}`}
-function firstAllowedDate(){const date=todayLocal();let offset=SETTINGS.preorderDays;if(new Date().getHours()>=SETTINGS.cutoffHour)offset++;date.setDate(date.getDate()+offset);return dateISO(date)}
-function prepareCheckout(){if(!cart.length)return;$("orderDate").min=firstAllowedDate();if(!$("orderDate").value||$("orderDate").value<$("orderDate").min)$("orderDate").value=$("orderDate").min;$("zone").innerHTML='<option value="">Pilih wilayah</option>'+SETTINGS.zones.map(z=>`<option value="${z.id}">${escapeHTML(z.name)} — Ongkir ${rupiah(z.fee)}</option>`).join("");$("bankText").textContent=SETTINGS.accountNumber?`${SETTINGS.bank} — ${SETTINGS.accountNumber} a.n. ${SETTINGS.accountName}`:"Nomor rekening penjual belum diisi. Konfirmasi melalui WhatsApp sebelum transfer.";$("formError").textContent="";updateCheckout();openDrawer("checkoutDrawer")}
-function method(){return document.querySelector('input[name="method"]:checked').value}
-function payment(){return document.querySelector('input[name="payment"]:checked').value}
-function selectedZone(){return SETTINGS.zones.find(z=>z.id===$("zone").value)}
-function updateCheckout(){const delivery=method()==="delivery",zone=selectedZone(),fee=delivery&&zone?zone.fee:0;$("deliveryFields").classList.toggle("hidden",!delivery);$("bankInfo").classList.toggle("hidden",payment()!=="Transfer Bank");$("ckSubtotal").textContent=rupiah(subtotal());$("ckDelivery").textContent=delivery?(zone?rupiah(fee):"Pilih wilayah"):"Gratis";$("ckTotal").textContent=rupiah(subtotal()+fee);$("minHelp").textContent=delivery&&zone&&subtotal()<zone.min?`Minimum belanja ${zone.name}: ${rupiah(zone.min)}. Tambahkan ${rupiah(zone.min-subtotal())} lagi atau pilih Ambil Sendiri.`:""}
-function validateCheckout(){const name=$("custName").value.trim(),phone=$("custPhone").value.trim(),date=$("orderDate").value,zone=selectedZone();let error="";if(!cart.length)error="Keranjang masih kosong.";else if(!name)error="Mohon isi nama pemesan.";else if(!/^\+?[\d\s()-]{9,18}$/.test(phone))error="Mohon isi nomor WhatsApp yang benar.";else if(!date||date<firstAllowedDate())error=`Tanggal PO paling cepat ${firstAllowedDate()} (sesuai batas waktu pemesanan).`;else if(method()==="delivery"&&!zone)error="Pilih wilayah pengantaran dulu, ya.";else if(method()==="delivery"&&!$("address").value.trim())error="Isi alamat lengkap untuk pengantaran.";else if(method()==="delivery"&&subtotal()<zone.min)error=`Belanja belum mencapai minimum ${rupiah(zone.min)} untuk ${zone.name}.`;$("formError").textContent=error;return !error}
-function buildMessage(){const zone=selectedZone(),delivery=method()==="delivery",fee=delivery?zone.fee:0;const items=cart.map((item,i)=>{const p=PRODUCTS.find(x=>x.id===item.id),v=getVariant(item);return `${i+1}. ${p.name} — ${v.name}\n   ${item.qty} × ${rupiah(v.price)} = ${rupiah(v.price*item.qty)}`}).join("\n");const date=$("orderDate").value.split("-").reverse().join("-");return `Halo Dapur Umi, saya mau PRE-ORDER ya 😊\n\nNama: ${$("custName").value.trim()}\nWhatsApp: ${$("custPhone").value.trim()}\nTanggal diterima: ${date}\nWaktu: ${$("slot").value}\nMetode: ${delivery?"Diantar ke Rumah":"Ambil Sendiri"}${delivery?`\nWilayah: ${zone.name}\nAlamat: ${$("address").value.trim()}`:""}\nPembayaran: ${payment()}\n\nDAFTAR PESANAN\n${items}\n\nSubtotal: ${rupiah(subtotal())}\nOngkir: ${rupiah(fee)}\nTOTAL: ${rupiah(subtotal()+fee)}\n\nCatatan: ${$("notes").value.trim()||"Tidak ada"}\n\nMohon konfirmasi ketersediaan, jadwal, dan pembayaran. Terima kasih!`}
-function sendWhatsApp(){if(!validateCheckout())return;const wa=SETTINGS.whatsapp.replace(/\D/g,"");if(!/^62\d{8,13}$/.test(wa)){toast("Nomor WA toko belum diatur. Gunakan Salin Rincian Pesanan dahulu.");return}window.open(`https://wa.me/${wa}?text=${encodeURIComponent(buildMessage())}`,"_blank","noopener,noreferrer")}
-async function copyOrder(){if(!validateCheckout())return;const msg=buildMessage();try{await navigator.clipboard.writeText(msg);toast("Rincian pesanan berhasil disalin") }catch(e){const area=document.createElement("textarea");area.value=msg;area.style.position="fixed";area.style.opacity="0";document.body.append(area);area.select();const copied=document.execCommand("copy");area.remove();toast(copied?"Rincian berhasil disalin":"Salin manual dari halaman")}}
-$("carousel").addEventListener("click",e=>{const button=e.target.closest("[data-product]");if(button)openProduct(button.dataset.product)});
-$("prev").addEventListener("click",()=>$("carousel").scrollBy({left:-320,behavior:"smooth"}));
-$("next").addEventListener("click",()=>$("carousel").scrollBy({left:320,behavior:"smooth"}));
-$("openCart").addEventListener("click",()=>{renderCart();openDrawer("cartDrawer")});
-$("variantSelect").addEventListener("change",updateDetail);
-$("detailMinus").addEventListener("click",()=>{detailQuantity=Math.max(1,detailQuantity-1);updateDetail()});
-$("detailPlus").addEventListener("click",()=>{detailQuantity=Math.min(99,detailQuantity+1);updateDetail()});
-$("addItem").addEventListener("click",addItem);
-$("cartBody").addEventListener("click",e=>{const btn=e.target.closest("[data-cart]");if(!btn)return;const {cart:action,id,variant}=btn.dataset;if(action==="remove")removeCart(id,variant);else updateCart(id,variant,action==="plus"?1:-1)});
-$("goCheckout").addEventListener("click",prepareCheckout);
-document.querySelectorAll('input[name="method"],input[name="payment"]').forEach(input=>input.addEventListener("change",updateCheckout));
-$("zone").addEventListener("change",updateCheckout);
-$("sendWa").addEventListener("click",sendWhatsApp);
-$("copyOrder").addEventListener("click",copyOrder);
-document.querySelectorAll("[data-close]").forEach(btn=>btn.addEventListener("click",()=>closeDrawer()));
-$("overlay").addEventListener("click",()=>closeDrawer());
-document.addEventListener("keydown",e=>{if(e.key==="Escape"&&currentDrawer)closeDrawer();if(e.key==="Tab"&&currentDrawer){const elements=[...$(currentDrawer).querySelectorAll('button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled])')].filter(el=>el.getClientRects().length);const first=elements[0],last=elements.at(-1);if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}}});
-renderProducts();saveCart();
-</script>
-</body>
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <meta content="#fff9ef" name="theme-color"/>
+  <meta content="Dapur Umi &mdash; pesan jajanan rumahan dengan sistem pre-order." name="description"/>
+  <title>
+   Dapur Umi | Pesan Jajanan Rumahan
+  </title>
+  <link href="assets/css/style.css" rel="stylesheet"/>
+ </head>
+ <body>
+  <header>
+   <div class="topbar wrap">
+    <a class="brand" href="#beranda">
+     Dapur
+     <span>
+      Umi.
+     </span>
+    </a>
+    <nav aria-label="Navigasi utama" class="nav">
+     <a class="small-link" href="#cara-pesan">
+      Cara Pesan
+     </a>
+     <a class="btn" href="#menu">
+      Lihat Menu &nearrow;
+     </a>
+     <button aria-label="Buka keranjang" class="icon-btn cart-trigger" id="openCart">
+      🛒
+      <span class="count" id="cartCount">
+       0
+      </span>
+     </button>
+    </nav>
+   </div>
+  </header>
+  <main>
+   <section class="hero" id="beranda">
+    <div class="wrap hero-grid">
+     <div>
+      <span class="eyebrow">
+       &hearts; Camilan Rumahan Penuh Cinta
+      </span>
+      <h1>
+       Enaknya
+       <br/>
+       Bikin
+       <em>
+        Nagih!
+       </em>
+      </h1>
+      <p class="lead">
+       Lagi pengen jajanan enak? Pilih favoritmu di Dapur Umi, tentukan tanggalnya, lalu pesan dengan mudah lewat WhatsApp.
+      </p>
+      <div class="hero-actions">
+       <a class="btn orange" href="#menu">
+        Lihat Menu Favorit &darr;
+       </a>
+       <a class="btn white" href="#cara-pesan">
+        Gimana Cara Pesannya?
+       </a>
+      </div>
+     </div>
+     <div aria-hidden="true" class="hero-visual">
+      <span class="stars">
+       ✳
+      </span>
+      <div class="hero-blob">
+       <img alt="" onerror="this.style.display='none';this.parentElement.textContent='🍰'" src="assets/images/1.JPG"/>
+      </div>
+      <div class="hero-sticker">
+       Fresh &amp; Yummy! ✨
+      </div>
+     </div>
+    </div>
+   </section>
+   <div class="ribbon">
+    ✿ MADE WITH LOVE ✿ PRE-ORDER DULU YAA ✿ DAPUR UMI ✿
+   </div>
+   <section class="menu-section" id="menu">
+    <div class="wrap menu-header">
+     <div>
+      <span class="eyebrow">
+       Menu Dapur Umi
+      </span>
+      <h2 class="section-title">
+       Mau Jajan Apa Hari Ini?
+      </h2>
+      <p class="subheading">
+       Geser kartu untuk melihat menu lainnya. Ketuk kartu untuk memilih kemasan dan jumlah pesanan.
+      </p>
+      <span class="badge-temp">
+       Nama &amp; harga masih contoh untuk uji coba
+      </span>
+     </div>
+     <div class="arrows">
+      <button aria-label="Lihat menu sebelumnya" class="icon-btn" id="prev">
+       &larr;
+      </button>
+      <button aria-label="Lihat menu berikutnya" class="icon-btn" id="next">
+       &rarr;
+      </button>
+     </div>
+    </div>
+    <div aria-label="Daftar menu Dapur Umi" class="carousel" id="carousel">
+    </div>
+   </section>
+   <section class="guide" id="cara-pesan">
+    <div class="wrap">
+     <h2>
+      Gampang Banget Pesannya!
+     </h2>
+     <div class="steps">
+      <article class="step">
+       <span class="step-number">
+        1
+       </span>
+       <h3>
+        Pilih Makanan
+       </h3>
+       <p>
+        Geser kartu, lihat harga, dan masukkan makanan favorit ke keranjang.
+       </p>
+      </article>
+      <article class="step">
+       <span class="step-number">
+        2
+       </span>
+       <h3>
+        Pilih Tanggal PO
+       </h3>
+       <p>
+        Tentukan tanggal pesanan ingin diambil atau diantar. Pesan paling lambat sehari sebelumnya, ya.
+       </p>
+      </article>
+      <article class="step">
+       <span class="step-number">
+        3
+       </span>
+       <h3>
+        Kirim via WhatsApp
+       </h3>
+       <p>
+        Isi nama dan alamat, lalu kirim rincian pesanan ke WhatsApp Dapur Umi untuk dikonfirmasi.
+       </p>
+      </article>
+     </div>
+    </div>
+   </section>
+   <div class="note-strip">
+    💛 Bisa ambil sendiri atau diantar sesuai wilayah. Pembayaran tunai atau transfer manual.
+   </div>
+  </main>
+  <footer>
+   <strong>
+    Dapur Umi &hearts;
+   </strong>
+   <br/>
+   Dibuat dengan hati, disajikan untuk kamu.
+   <br/>
+   &copy; 2026 Dapur Umi
+  </footer>
+  <div class="overlay hidden" id="overlay">
+  </div>
+  <aside aria-labelledby="detailTitle" aria-modal="true" class="drawer hidden" id="detailDrawer" role="dialog">
+   <div class="drawer-head">
+    <h2>
+     Detail Makanan
+    </h2>
+    <button aria-label="Tutup detail" class="icon-btn" data-close="">
+     &times;
+    </button>
+   </div>
+   <div class="drawer-body">
+    <div class="detail-photo" id="detailPhoto">
+    </div>
+    <h2 class="detail-title" id="detailTitle">
+    </h2>
+    <p class="detail-desc" id="detailDesc">
+    </p>
+    <label class="label" for="variantSelect">
+     Mau beli yang mana?
+    </label>
+    <select class="field" id="variantSelect">
+    </select>
+    <p class="help" id="unitInfo">
+    </p>
+    <label class="label">
+     Jumlah kemasan
+    </label>
+    <div class="quantity">
+     <button aria-label="Kurangi jumlah" class="qty-btn" id="detailMinus">
+      &minus;
+     </button>
+     <span class="qty-value" id="detailQty">
+      1
+     </span>
+     <button aria-label="Tambah jumlah" class="qty-btn" id="detailPlus">
+      +
+     </button>
+    </div>
+   </div>
+   <div class="drawer-footer">
+    <div class="summary-row total">
+     <span>
+      Total
+     </span>
+     <span id="detailTotal">
+      Rp0
+     </span>
+    </div>
+    <button class="btn orange block" id="addItem">
+     + Masukkan Keranjang
+    </button>
+   </div>
+  </aside>
+  <aside aria-labelledby="cartTitle" aria-modal="true" class="drawer hidden" id="cartDrawer" role="dialog">
+   <div class="drawer-head">
+    <h2 id="cartTitle">
+     Keranjang Pesanan
+    </h2>
+    <button aria-label="Tutup keranjang" class="icon-btn" data-close="">
+     &times;
+    </button>
+   </div>
+   <div class="drawer-body" id="cartBody">
+   </div>
+   <div class="drawer-footer">
+    <div class="summary-row total">
+     <span>
+      Subtotal
+     </span>
+     <span id="cartSubtotal">
+      Rp0
+     </span>
+    </div>
+    <button class="btn orange block" id="goCheckout">
+     Lanjut Isi Data Pesanan &rarr;
+    </button>
+   </div>
+  </aside>
+  <aside aria-labelledby="checkoutTitle" aria-modal="true" class="drawer hidden" id="checkoutDrawer" role="dialog">
+   <div class="drawer-head">
+    <h2 id="checkoutTitle">
+     Isi Data Pesanan
+    </h2>
+    <button aria-label="Tutup checkout" class="icon-btn" data-close="">
+     &times;
+    </button>
+   </div>
+   <div class="drawer-body">
+    <div class="info">
+     📅
+     <strong>
+      Sistem Pre-Order:
+     </strong>
+     pilih tanggal pesanan ingin diterima. Untuk contoh ini, batas pemesanan adalah H-1 pukul 18.00.
+    </div>
+    <form id="checkoutForm" novalidate="">
+     <div class="form-grid">
+      <div class="full">
+       <label class="label" for="custName">
+        Nama pemesan *
+       </label>
+       <input autocomplete="name" class="field" id="custName" placeholder="Nama Ibu / Bapak" required=""/>
+      </div>
+      <div class="full">
+       <label class="label" for="custPhone">
+        Nomor WhatsApp *
+       </label>
+       <input class="field" id="custPhone" inputmode="tel" placeholder="08xxxxxxxxxx" required="" type="tel"/>
+      </div>
+      <div>
+       <label class="label" for="orderDate">
+        Mau diterima tanggal berapa? *
+       </label>
+       <input class="field" id="orderDate" required="" type="date"/>
+      </div>
+      <div>
+       <label class="label" for="slot">
+        Pilihan waktu *
+       </label>
+       <select class="field" id="slot" required="">
+        <option value="11.00&ndash;13.00">
+         Siang (11.00&ndash;13.00)
+        </option>
+        <option value="16.00&ndash;18.00">
+         Sore (16.00&ndash;18.00)
+        </option>
+       </select>
+      </div>
+      <div class="full">
+       <span class="label">
+        Pesanan mau diterima bagaimana? *
+       </span>
+       <div class="radio-group">
+        <label class="choice">
+         <input checked="" name="method" type="radio" value="pickup"/>
+         🏠 Ambil Sendiri (gratis ongkir)
+        </label>
+        <label class="choice">
+         <input name="method" type="radio" value="delivery"/>
+         🛵 Diantar ke Rumah
+        </label>
+       </div>
+      </div>
+      <div class="full hidden" id="deliveryFields">
+       <label class="label" for="zone">
+        Pilih wilayah pengantaran *
+       </label>
+       <select class="field" id="zone">
+        <option value="">
+         Pilih wilayah
+        </option>
+       </select>
+       <p class="help">
+        Tarif dan minimum belanja masih contoh. Wilayah asli akan ditetapkan kemudian.
+       </p>
+       <label class="label" for="address">
+        Alamat lengkap *
+       </label>
+       <textarea class="field" id="address" placeholder="Nama jalan, nomor rumah, patokan" rows="3"></textarea>
+      </div>
+      <div class="full">
+       <span class="label">
+        Cara pembayaran *
+       </span>
+       <div class="radio-group">
+        <label class="choice">
+         <input checked="" name="payment" type="radio" value="Tunai"/>
+         💵 Bayar Tunai
+        </label>
+        <label class="choice">
+         <input name="payment" type="radio" value="Transfer Bank"/>
+         🏦 Transfer Bank Manual
+        </label>
+       </div>
+       <div class="details-inline hidden" id="bankInfo">
+        <strong>
+         Transfer setelah pesanan dikonfirmasi
+        </strong>
+        <span id="bankText">
+         Nomor rekening penjual belum diisi.
+        </span>
+       </div>
+      </div>
+      <div class="full">
+       <label class="label" for="notes">
+        Catatan (jika ada)
+       </label>
+       <textarea class="field" id="notes" placeholder="Contoh: tidak terlalu pedas" rows="2"></textarea>
+      </div>
+     </div>
+    </form>
+    <p aria-live="polite" class="error" id="formError" role="alert">
+    </p>
+    <div class="details-inline">
+     <div class="summary-row">
+      <span>
+       Subtotal makanan
+      </span>
+      <strong id="ckSubtotal">
+       Rp0
+      </strong>
+     </div>
+     <div class="summary-row">
+      <span>
+       Ongkir
+      </span>
+      <strong id="ckDelivery">
+       Rp0
+      </strong>
+     </div>
+     <div class="summary-row total">
+      <span>
+       Total
+      </span>
+      <span id="ckTotal">
+       Rp0
+      </span>
+     </div>
+     <p class="help" id="minHelp">
+     </p>
+    </div>
+   </div>
+   <div class="drawer-footer">
+    <button class="btn orange block" id="sendWa">
+     Kirim Pesanan ke WhatsApp &rarr;
+    </button>
+    <button class="btn white block" id="copyOrder" style="margin-top:10px">
+     Salin Rincian Pesanan
+    </button>
+    <p class="help" style="text-align:center">
+     Pesanan baru diproses setelah Dapur Umi mengonfirmasi melalui WhatsApp.
+    </p>
+   </div>
+  </aside>
+  <div class="toast hidden" id="toast" role="status">
+  </div>
+  <script defer="" src="assets/js/app.js">
+  </script>
+ </body>
 </html>
+
