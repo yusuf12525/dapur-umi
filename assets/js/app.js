@@ -36,7 +36,7 @@ const SETTINGS = {
     // BAGIAN 01 — IDENTITAS TOKO
     // Nomor WhatsApp menggunakan format 628xxxxxxxxxx
 
-    whatsapp: "",
+    whatsapp: "6287741854691",
     bank: "",
     accountNumber: "",
     accountName: "",
@@ -1209,7 +1209,7 @@ function buildMessage() {
     return `Halo Dapur Umi, saya mau PRE-ORDER ya 😊
 
 Nama: ${$("custName").value.trim()}
-WhatsApp: ${$("6287741854691").value.trim()}
+WhatsApp: ${$("custPhone").value.trim()}
 Tanggal diterima: ${date}
 Waktu: ${$("slot").value}
 Metode: ${delivery ? "Diantar ke Rumah" : "Ambil Sendiri"}${delivery ? `\nWilayah: ${zone.name}\nAlamat: ${$("address").value.trim()}` : ""}
